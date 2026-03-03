@@ -1,0 +1,14 @@
+{
+    "image": "bluesky-social/workshop-docker:1.0",
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "README.md"
+            ]
+        }
+    },
+    "forwardPorts": [3000, 2480],
+    "remoteEnv": {
+        "PROMPT_DIRTRIM": "2"
+    }
+}
