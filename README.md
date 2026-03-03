@@ -26,7 +26,7 @@ Alternatively, you can clone this repository down locally to run the exercises o
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # install homebrew
-brew install websocat jq goat node
+brew install websocat jq goat node go
 npm i -g @atproto/lex
-go install [github.com/bluesky-social/indigo/cmd/tap](http://github.com/bluesky-social/indigo/cmd/tap)
+go install github.com/bluesky-social/indigo/cmd/tap@latest
 ```
