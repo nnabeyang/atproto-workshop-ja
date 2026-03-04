@@ -1,4 +1,4 @@
-## Getting data from the firehose
+# Getting data from the firehose
 
 In this case, we'll start out by looking at some raw protocol data.
 

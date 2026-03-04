@@ -84,6 +84,8 @@ By default, you should get my Bluesky profile in the output:
 }
 ```
 
+## Other ways to read data
+
 You can also run it a couple of other ways! For example, try providing your own profile name as an additional argument:
 
 ```bash
