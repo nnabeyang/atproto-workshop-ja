@@ -1,5 +1,6 @@
 {
     "image": "ghcr.io/bluesky-social/workshop:1.0",
+    "remoteUser": "linuxbrew",
     "customizations": {
         "codespaces": {
             "openFiles": [
