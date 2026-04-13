@@ -6,4 +6,4 @@ Remember back in Exercise 3, when we wrote some "xyz.statusphere.status" records
 
 Statusphere creates and consumes records from the Atmosphere — it can write its own records, and it can display records from other people publishing under that Lexicon too.
 
-There's a starting point in this exercise directory under `sample-app`. Go ahead and work from there to complete the tutorial from our docs. Feel free to make changes as you go, and don't worry if you don't finish! This is meant to show off what "putting it all together" can look like, for one particular kind of record.
+The `sample-app` in this directory provides a starting point — it has a NextJS atproto OAuth app baseline, but no other features yet. Go ahead and work from there to complete the tutorial from our docs. Feel free to make changes as you go, and don't worry if you don't finish! This is meant to show off what "putting it all together" can look like, for one particular kind of record.

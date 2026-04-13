@@ -1,6 +1,14 @@
 # Code Repository for Atmosphere Workshops
 This repo contains exercises used in the "Consuming the Atmosphere" and "Creating the Atmosphere" workshops.
 
+The slides for these workshops are here:
+- [Consuming the Atmosphere](https://docs.google.com/presentation/d/1X0YK4-08p2ujrv5WIT1Fsr8v7FBuSe2VgjOFQdLHi2M/edit?usp=sharing)
+- [Creating the Atmosphere](https://docs.google.com/presentation/d/1r_cGG0xRnaXrpwUICxbz4-h0bIwBj6jnyHIt0IBzl9Y/edit?usp=sharing)
+
+Each workshop should take about 3 hours to deliver with one 15-minute break in the middle. For *Consuming the Atmosphere*, aim for about 20 minutes of slides at a time, followed by 20 minutes for each exercise block. *Creating the Atmosphere* can have a looser structure — let people work for 30+ minutes at a time before calling the room back together. You can even consolidate some of the later design exercises together, depending on how participation is going.
+
+Consider using a tool like https://www.slido.com/features-live-qa to gather questions during the workshop, in addition to using a TA and allowing people to raise their hands throughout.
+
 ## Hands-On Exercises
 
 Directory Name                     | Exercise
@@ -30,3 +38,5 @@ brew install websocat jq goat node go pnpm
 npm i -g @atproto/lex tsx
 go install github.com/bluesky-social/indigo/cmd/tap@latest
 ```
+
+If you opt for local installation, note that the `lex` CLI can collide with tools already installed in participants' `PATH` environments. In this case, they should substitute the `ts-lex` command. If this happens on a consistent basis, we'll consider updating the docs to refer mainly to `ts-lex`.

@@ -41,16 +41,16 @@ This creates a skeleton. Now open it up and add your fields. The [Lexicon Style 
 - Don't make fields `required` unless you mean it
 - Use objects in arrays (not raw strings/numbers) so you can extend later
 
-Finally, you can publish your Lexicon to your own repository, so others can install it:
+You can also experiment with https://prototypey.org/. 
+
+Finally, you could publish your Lexicon to your own repository, so others can install it:
 
 ```bash
 goat account login
 goat lex publish lexicons/your.domain.plant.json
 ```
 
-Now anyone can `lex install your.domain.plant` and get types for your schema.
-
-You can even now use `lex` to install your own Lexicon and generate TypeScript types:
+Lexicon resolution works by using DNS. You probably don't own `domain.your`, so this won't work out of the box, but if you *did* own that domain and connect it to an atproto account, anyone could `lex install your.domain.plant` and get types for your schema:
 
 ```bash
 lex install your.domain.plant
