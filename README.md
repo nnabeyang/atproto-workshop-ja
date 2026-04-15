@@ -25,7 +25,7 @@
 `exercises/10-goat`                | [演習 10](exercises/10-goat/README.md)
 
 ## リファレンス
-このコースを進めるにあたっては、 [atproto docs](https://atproto.com) をリファレンスとして参照してください。
+このコースを進めるにあたっては、 [atproto docs](https://atproto.com/ja) をリファレンスとして参照してください。
 
 ## このコースの演習環境
 GitHub Codespaces を使用すると、このコースの演習環境を構築できます。
