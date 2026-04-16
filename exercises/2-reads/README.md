@@ -1,8 +1,8 @@
-# Reading data
+# データの読み込み
 
-OK, now we're going to do some individual reads over our HTTP API! Most of the ways you'll interact with AT records, other than the Jetstream websocket, are just HTTP calls, and here you'll see a functional example.
+さて、それではHTTP APIを使って、いくつか個別にデータを読み取ってみましょう！JetstreamのWebSocketを除けば、ATレコードを扱う操作のほとんどは単なるHTTP呼び出しです。ここでは、実際に動作する例を見ていきます。
 
-We've got a little script for interacting with our API without authenticating in `src/index.ts`. It looks like this:
+認証なしでAPIとやり取りするための簡単なスクリプトを`src/index.ts`に用意しました。内容は以下のとおりです:
 
 ```ts
 import { Client } from '@atproto/lex'
@@ -29,20 +29,20 @@ async function main() {
 main()
 ```
 
-To run this script, first install packages with `npm` from this directory:
+このスクリプトを実行するために、まずはこのディレクトリで依存パッケージをインストールしましょう:
 
 ```bash
 cd /workspace/exercises/2-reads
 npm i
 ```
 
-Then, run the script with `npx tsx src/index.ts`:
+インストールが終わったら、次のコマンドでスクリプトを実行します。
 
 ```bash
 npx tsx src/index.ts
 ```
 
-By default, you should get my Bluesky profile in the output:
+特に引数を指定せずに実行すれば、次のBlueskyプロフィールが表示されます:
 
 ```
 {
@@ -86,16 +86,18 @@ By default, you should get my Bluesky profile in the output:
 
 ## Other ways to read data
 
-You can also run it a couple of other ways! For example, try providing your own profile name as an additional argument:
+## データを読み取るその他の方法
+
+他にもいくつか実行方法があります。例えば、追加の引数として自分の **ハンドル** を指定してみてください:
 
 ```bash
 npx tsx src/index.ts you.bsky.social
 ```
 
-That should return your profile. In both of these cases, we're doing `client.call(app.bsky.actor.getProfile)`. You can also use this same script to get your 10 most recent posts instead, by adding a `posts` argument:
+これであなたのプロフィールが返されるはずです。これらのケースでは、内部的に`client.call(app.bsky.actor.getProfile)`を実行しています。また、引数に`posts`を追加することで、同じスクリプトを使って最新の投稿10件を取得することもできます：
 
 ```bash
 npx tsx src/index.ts you.bsky.social posts
 ```
 
-This calls `client.list(app.bsky.feed.post)` instead. Feel free to copy these post URIs into a browser interface to get a better look at them. Anything interesting here?
+この場合、代わりに`client.list(app.bsky.feed.post)`が呼び出されます。取得した投稿のURIをブラウザにコピーして、中身を詳しく確認してみてください。何か面白い発見はありましたか？
