@@ -7,7 +7,7 @@ const pdsClient = new Client('https://bsky.social')
 
 const args = process.argv.slice(2)
 
-const DEFAULT_ACTOR: AtIdentifierString = 'alex.bsky.team';
+const DEFAULT_ACTOR: AtIdentifierString = 'jp.bsky.app';
 const CMD_POSTS = 'posts';
 
 const [actor, command] = args[0] === CMD_POSTS

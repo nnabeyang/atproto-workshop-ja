@@ -46,40 +46,42 @@ npx tsx src/index.ts
 
 ```
 {
-  did: 'did:plc:vmt7o7y6titkqzzxav247zrn',
-  handle: 'alex.bsky.team',
-  displayName: 'Alex',
-  avatar: 'https://cdn.bsky.app/img/avatar/plain/did:plc:vmt7o7y6titkqzzxav247zrn/bafkreiaho53ylxsdwhsgc7zyh7t6l3q37xwkrdpzbbzx5zrlywztgspn4a@jpeg',
+  did: 'did:plc:ry3hbexak5ytsum7aazhpkbv',
+  handle: 'jp.bsky.app',
+  displayName: 'Bluesky日本語（公式）',
+  avatar: 'https://cdn.bsky.app/img/avatar/plain/did:plc:ry3hbexak5ytsum7aazhpkbv/bafkreienc27b7pfsjflwvh645zh7ywb3ruwgshwqziv3ilo5mqsksjnl3i',
   associated: {
-    lists: 0,
+    lists: 1,
     feedgens: 0,
-    starterPacks: 0,
+    starterPacks: 1,
     labeler: false,
-    chat: { allowIncoming: 'following' },
-    activitySubscription: { allowSubscriptions: 'followers' },
-    germ: {
-      showButtonTo: 'usersIFollow',
-      messageMeUrl: 'https://landing.ger.mx/newUser'
-    }
+    activitySubscription: { allowSubscriptions: 'followers' }
   },
   labels: [],
-  createdAt: '2023-05-15T15:20:45.790Z',
+  createdAt: '2026-03-31T23:39:06.356Z',
   verification: {
-    verifications: [ [Object] ],
+    verifications: [
+      {
+        issuer: 'did:plc:z72i7hdynmk6r22z27h6tvur',
+        uri: 'at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.graph.verification/3mikg6mqywn2r',
+        isValid: true,
+        createdAt: '2026-04-03T00:02:41.492Z'
+      }
+    ],
     verifiedStatus: 'valid',
     trustedVerifierStatus: 'none'
   },
-  description: 'the passive pasadena thrill | bsky devrel\n' +
+  description: 'Bluesky日本語公式アカウントです（ユーザー名をチェック👆）。\n' +
     '\n' +
-    'book a meeting: https://calendar.app.google/rNeqWSx2uMfzhQYV6',
-  indexedAt: '2026-02-20T21:02:25.750Z',
-  banner: 'https://cdn.bsky.app/img/banner/plain/did:plc:vmt7o7y6titkqzzxav247zrn/bafkreigvwsqd5vpvo7qg3prrbeudyg2jcnoburwsca3ahmelzehiumxzrm@jpeg',
-  followersCount: 1256,
-  followsCount: 699,
-  postsCount: 1730,
+    'バグのご報告、機能リクエスト、フィードバックはこちらへ →  support@bsky.app',
+  indexedAt: '2026-04-03T00:35:19.149Z',
+  banner: 'https://cdn.bsky.app/img/banner/plain/did:plc:ry3hbexak5ytsum7aazhpkbv/bafkreid2u5md56vpo5xabs6tu3bbscf3zgfzbwxhkh3wedrh46lpvnzloe',
+  followersCount: 22097,
+  followsCount: 6,
+  postsCount: 56,
   pinnedPost: {
-    cid: 'bafyreideit7u37hyuhtgapiypl4wpgcenxif7l3bypplwkvjoknz4pujdq',
-    uri: 'at://did:plc:vmt7o7y6titkqzzxav247zrn/app.bsky.feed.post/3lripmoyr3c2y'
+    cid: 'bafyreiaupiqpvecwabwcyuql3ixp5q5f5us4zy5fdjmjsb7p7w2zgekip4',
+    uri: 'at://did:plc:ry3hbexak5ytsum7aazhpkbv/app.bsky.feed.post/3mikfzwbw2k2j'
   }
 }
 ```
