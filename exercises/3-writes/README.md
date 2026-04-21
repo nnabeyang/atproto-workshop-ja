@@ -1,8 +1,8 @@
-# Writing data
+# データの書き込み
 
-This is going to be similar to Exercise 2, but this time, you'll actually log in and post — i.e., create new records on the network.
+演習2と似た内容ですが、今回は実際にログインして投稿を行います。具体的には、ネットワーク上に新しいレコードを作成します。
 
-Here, in `src/index.ts`, we have another little script:
+`src/index.ts`に、短いスクリプトを用意しました:
 
 ```ts
 import { Client } from '@atproto/lex'
@@ -39,26 +39,26 @@ async function main() {
 main()
 ```
 
-Some of this — like the use of `Client`, and the API calls — should be recognizable from the last exercise. This time, however, we're adding a login step, meaning that we're able to run `client.create()` commands to actually write new records!
+`Client` の使用や API 呼び出しなど、一部は前回の演習で見覚えがあるはずです。今回はそこにログインの手順を追加することで、 `client.create()` コマンドを実行して実際に新しいレコードを書き込めるようになります。
 
-One thing to note is that this isn't very different from reading existing records — it's a lot like the different between an HTTP GET and a POST. Reading and writing are similar API calls.
+注目すべき点は、これが既存レコードの読み取りとそれほど大きく変わらないということです。HTTP の GET と POST の違いのようなものだと考えてください。読み込みも書き込みも、本質的には似たような API 呼び出しです。
 
-To run this script, first install packages with `npm` from this directory:
+このスクリプトを実行するには、まずこのディレクトリから `npm` を使ってパッケージをインストールしてください:
 
 ```bash
 cd /workspace/exercises/3-writes
 npm i
 ```
 
-Then, run the script with `npx tsx src/index.ts`:
+次に、以下のコマンドでスクリプトを実行します:
 
 ```bash
 npx tsx src/index.ts your-username your-password
 ```
 
-Now, don't worry — by default, this isn't going to create new Bluesky posts. Instead, we're defaulting to a different record Lexicon — `xyz.statusphere.status` instead of `app.bsky.feed.post`. This is used for toy examples, and won't be picked up by any real-world apps.
+ご安心ください。デフォルトでは、新しい Bluesky の投稿を作成するわけではありません。代わりに、 `app.bsky.feed.post` ではなく、別のレキシコン  `xyz.statusphere.status` を使用します。これは **デモ用の例題（toy examples）** で使われるもので、実際のアプリにデータが表示されることはありません。
 
-This should produce a result like:
+実行すると、次のような結果が得られるはずです：
 
 ```
 {
@@ -72,14 +72,14 @@ This should produce a result like:
 }
 ```
 
-As usual, we can pop that at:// URI into a browser that supports browsing AT records to see what it looks like on the PDS side: https://pdsls.dev/at://did:plc:vmt7o7y6titkqzzxav247zrn/xyz.statusphere.status/3mgbdr5jiqf2p.
+これまでと同様に、ATレコードの閲覧に対応したブラウザで at:// URI を開けば、PDS側にどのように保存されているかを確認できます： https://pdsls.dev/at://did:plc:vmt7o7y6titkqzzxav247zrn/xyz.statusphere.status/3mgbdr5jiqf2p
 
-We created a record with these contents: 🍕
+このような内容のレコードが作成されました： 🍕
 
-If you wanted to use this app to actually post for real, just add some additional arguments!
+もし、このアプリを使ってBlueskyに投稿をしてみたいなら、引数をいくつか追加して実行するだけです！
 
 ```bash
 npx tsx src/index.ts your-username your-password bsky "wow I love this great workshop by @alex.bsky.team"`
 ```
 
-Note: I am not responsible for you spamming your followers.
+注：フォロワーへのスパム行為について、私は一切の責任を負いませんのであしからず。
