@@ -1,25 +1,25 @@
-# PDS records
+# PDSレコード
 
-OK, now let's take a look at how those records actually get written to a PDS. I've created an account you can all use to ssh to the server running my PDS, which I posted some records to as part of our last exercise.
+それでは、これらのレコードが実際にどのようにPDSへ書き込まれるのかを見ていきましょう。じつは、あらかじめ私のPDSに、いくつかテスト用のデータを準備しておきました。皆さんがサーバーにSSHでログインしてそれらを確認できるよう、専用のアカウントも用意してあります。
 
 ```bash
 ssh workshop@justdothings.net
 ```
 
-Once you're on the server, take a look in the `/pds` directory.
+サーバーに接続できたら、 `/pds` ディレクトリの中身を確認してみてください。
 
 ```bash
 cd /pds
 ls
 ```
 
-This is what gets installed by our reference [PDS](https://github.com/bluesky-social/pds). We won't poke around the whole thing very long, just make a couple observations. First, let's look at the `account.sqlite` database:
+これはリファレンス実装の [PDS](https://github.com/bluesky-social/pds) によってインストールされたものです。全体を長々と調べることはしませんが、いくつか観察してみましょう。まず、データベースファイル `account.sqlite` を見てみます:
 
 ```bash
 sqlite3 account.sqlite
 ```
 
-Let's take a look at the users hosted here:
+ここでホストされているユーザーを確認してみましょう:
 
 ```sql
 select * from actor;
@@ -31,6 +31,6 @@ did:plc:lfbdlon3iuvgnrizqzvq2kjb|testuser.justdothings.net|2026-01-27T18:06:34.1
 did:plc:j7gkx5yhhnvczdsrgydushhc|test-user-two.justdothings.net|2026-01-27T18:46:52.347Z|||
 ```
 
-Look, it's my test users! Pretty neat.
+ほら、私のテストユーザーたちです！面白いですよね。
 
-Now let's look at the actual records per-user...
+それでは、各ユーザーの実際のレコードを見ていきましょう...
