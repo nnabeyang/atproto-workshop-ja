@@ -1,40 +1,40 @@
-# Getting backlinks
+# バックリンクの取得
 
-In the last exercise, you saw how records are stored on a PDS. But what if you want to find *all the records that reference a particular record*? For example, all the likes on a post, or all the replies to it?
+前回の演習では、PDSにレコードがどのように保存されるかを見てきました。では、特定のレコードを参照しているすべてのレコードを見つけたい場合はどうすればよいでしょうか？たとえば、ある投稿に対するすべての「いいね！」や、すべての返信などです。
 
-One approach would be to backfill the entire network and query your local database (we'll do that in exercise 6). But that's heavyweight — you'd need to store terabytes of data.
+一つのアプローチは、ネットワーク全体をバックフィル（全データの同期）してローカルデータベースにクエリを実行することです（これは演習6で行います）。しかし、これにはテラバイト規模のデータを保存する必要があり、非常に **大掛かりな** 作業になります。
 
-**Backlinks** offer a lighter-weight solution. A backlink service indexes the network and lets you query for records that *point to* a given URI, without storing everything yourself.
+**バックリンク** は、より軽量な解決策を提供します。バックリンクサービスがネットワークをインデックス化するため、自分ですべてのデータを保存することなく、特定のURIを **指し示している** レコードを照会できるようになります。
 
-## Looking at a post
+## 投稿を表示する
 
-Let's start by looking at a specific post. Open this URL in your browser:
+まずは特定の投稿を見てみましょう。ブラウザで次のURLを開いてください:
 
 https://pdsls.dev/at://did:plc:a4pqq234yw7fqbddawjo7y35/app.bsky.feed.post/3m237ilwc372e
 
-This is a post record stored on someone's PDS. Take a moment to look at the structure — you'll see the `text` field with the post content, a `createdAt` timestamp, and maybe some other fields like `embed` or `facets`.
+これは、あるユーザーの PDS に保存されている投稿レコードです。その構造を確認してみましょう。投稿内容が含まれる `text` フィールドや `createdAt` タイムスタンプのほか、`embed` や `facets` といったフィールドも確認できるはずです。
 
-Now, this post probably has some likes and replies. But where are they? They're not *in* this record — likes and replies are separate records stored on *other people's* PDSes, each containing a reference back to this post's URI.
+さて、この投稿にはおそらく「いいね！」や返信がついているはずです。しかし、それらは一体どこにあるのでしょうか？ それらはこのレコードの中には含まれていません。「いいね！」や返信は、他のユーザーの PDS に保存されている独立したレコードであり、それぞれがこの投稿の URI への参照を保持しているのです。
 
-So how do we find them?
+では、どうすればその「いいね!」や返信を見つけられるでしょうか？
 
-## Using Constellation
+## Constellation を使ってみる
 
-[Constellation](https://constellation.microcosm.blue) is a community backlinks service run by Microcosm. It indexes the network and tracks which records point to which other records.
+[Constellation](https://constellation.microcosm.blue) は、Microcosm が運営しているコミュニティベースのバックリンクサービスです。ネットワークをインデックス化し、レコード間の参照関係を追跡します。
 
-Let's use it to find all the likes on that post. Open this URL in your browser:
+これを使って、先ほどの投稿への「いいね！」をすべて見つけてみましょう。ブラウザで次の URL を開いてください。
 
 https://constellation.microcosm.blue/xrpc/blue.microcosm.links.getBacklinks?subject=at%3A%2F%2Fdid%3Aplc%3Aa4pqq234yw7fqbddawjo7y35%2Fapp.bsky.feed.post%2F3m237ilwc372e&source=app.bsky.feed.like%3Asubject.uri&limit=16
 
-Constellation's web interface will render the results in a readable format. You should see a list of like records that point to our original post. Each entry shows:
-- The AT URI of the like record itself
-- The path within the record that contains the reference (`subject.uri`)
+Constellation のウェブインターフェースにより、結果が読みやすい形式で表示されます。元の投稿を指している「いいね！」レコードのリストが表示されるはずです。各エントリには以下の情報が含まれています。
+- 「いいね！」レコード自体の AT URI
+- 参照が含まれているレコード内のパス (`subject.uri`)
 
-Pick one of those links and click through on `browse record`. Look at the like record's structure. You'll see a `subject` field containing the URI of the post it's liking — that's the link that Constellation indexed!
+リストからリンクを一つ選び、 `browse record` をクリックして詳細を確認してください。「いいね！」レコードの構造を見ると、 `subject` フィールドに「いいね！」の対象である投稿の URI が含まれていることがわかります。これが Constellation によってインデックス化された「リンク」の正体です。
 
-## Querying from the command line
+## コマンドラインからのクエリ実行
 
-You can also query Constellation from the command line. Let's break down the URL to see what we're asking for:
+Constellation はコマンドラインからもクエリを実行できます。URL を分解して、どのようなリクエストを送っているのかを確認してみましょう:
 
 ```bash
 curl -s -H "Accept: application/json" \
@@ -45,16 +45,16 @@ limit=16" \
   | jq .
 ```
 
-The key parameters are:
-- `subject`: The AT URI you want backlinks *to* (URL-encoded — the `%3A` and `%2F` are just `:` and `/`)
-- `source`: The record type and field path to search — here it's `app.bsky.feed.like:subject.uri`
-- `limit`: How many results to return
+主なパラメータは以下のとおりです:
+- `subject`: バックリンクの取得先となる AT URI（URL エンコードされており、`%3A` や `%2F` はそれぞれ `:` や `/` に対応します）。
+- `source`: 検索対象とするレコードタイプとフィールドパス。ここでは app.bsky.feed.like:subject.uri を指定しています。
+- `limit`: 返される結果の最大件数
 
-The JSON response will have a `links` array containing the matching records.
+返却される JSON レスポンスには、条件に一致するレコードを格納した `records` 配列が含まれます。
 
-## Finding replies
+## 返信を取得する
 
-Likes aren't the only records that reference posts. Let's find replies instead. The difference is in the `source` parameter — instead of looking for likes, we look for posts where the reply field points to our target:
+投稿を参照するレコードは「いいね！」だけではありません。次は、代わりに「返信」を取得してみましょう。違いは source パラメータの指定にあります。「いいね！」を探す代わりに、reply フィールドが対象（ターゲット）を指している投稿を探します:
 
 ```bash
 curl -s -H "Accept: application/json" \
@@ -65,19 +65,19 @@ limit=16" \
   | jq .
 ```
 
-Compare the `source` parameter:
-- **Likes:** `app.bsky.feed.like:subject.uri`
-- **Replies:** `app.bsky.feed.post:reply.parent.uri`
+`source` パラメータを比較してみましょう。
+- **いいね:** `app.bsky.feed.like:subject.uri`
+- **返信:** `app.bsky.feed.post:reply.parent.uri`
 
-This tells Constellation to look for `app.bsky.feed.post` records where the `reply.parent.uri` field matches our target — in other words, direct replies.
+これは、 `reply.parent.uri` フィールドが対象の URI と一致する `app.bsky.feed.post` レコードを検索するよう、Constellation に指示しています。つまり、その投稿に対する直接の返信を見つけ出すことになります。
 
-## When to use backlinks vs. backfilling
+## バックリンクとバックフィルの使い分け
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Backlinks** | Lightweight, no storage needed, real-time | Dependent on external service |
-| **Backfilling** | Full control, works offline, custom indexing | Storage-intensive, sync lag |
+| アプローチ | 長所（メリット） | 短所（デメリット） |
+| :--- | :--- | :--- |
+| **バックリンク** | 軽量、ストレージ不要、リアルタイム性 | 外部サービスに依存する |
+| **バックフィル** | 完全な制御が可能、オフライン動作、カスタムインデックス作成 | ストレージを大量に消費、同期に遅延が発生する |
 
-Backlinks are great for simple lookups — finding who liked, replied to, or reposted something. Backfilling (which we'll explore in the next exercise) is better when you need complex queries, want to guarantee availability, or need to process records in bulk.
+バックリンクは、誰が「いいね！」、返信、あるいはリポストをしたかといった、単純な検索に最適です。一方で、複雑なクエリが必要な場合や、データの可用性を自ら担保したい場合、あるいはレコードを一括処理する必要がある場合には、バックフィル（次の演習で詳しく解説します）が適しています。
 
-What other kinds of relationships might you want to query with backlinks? Think about follows, blocks, list memberships, or even custom record types from non-Bluesky apps.
+バックリンクを使って、他にどのような関係性がクエリできるか考えてみましょう。フォローやブロック、リストの所属関係、さらには Bluesky 以外のアプリによるカスタムレコードタイプなど、どのようなものが考えられるでしょうか？
