@@ -1,9 +1,9 @@
-# Statusphere
+# Statusphere（ステータスフィア）
 
-OK! We're almost at the end of the workshop now — this is our last exercise.
+さあ、ワークショップもいよいよ終盤です。これが最後の演習です。
 
-Remember back in Exercise 3, when we wrote some "xyz.statusphere.status" records? Well, those actually come from an [entire tutorial](https://atproto.com/guides/statusphere-tutorial) implementing a sample app that we call "Statusphere."
+演習3で "xyz.statusphere.status" というレコードを作成したのを覚えていますか？ 実は、それらは "Statusphere" というサンプルアプリの実装手順を記した[チュートリアル](https://atproto.com/guides/statusphere-tutorial)から来ているものです。
 
-Statusphere creates and consumes records from the Atmosphere — it can write its own records, and it can display records from other people publishing under that Lexicon too.
+Statusphere は Atmosphere 上でレコードの作成と読み込みを行います。独自のレコードを書き込むこともできますし、同じレキシコンを用いて公開されている他のユーザーのレコードを表示することも可能です。
 
-The `sample-app` in this directory provides a starting point — it has a NextJS atproto OAuth app baseline, but no other features yet. Go ahead and work from there to complete the tutorial from our docs. Feel free to make changes as you go, and don't worry if you don't finish! This is meant to show off what "putting it all together" can look like, for one particular kind of record.
+このディレクトリにある `sample-app` は、開発の出発点となるコードです。NextJS をベースとした atproto OAuth アプリの基本的な構成は整っていますが、それ以外の機能はまだ実装されていません。ここから作業を開始して、公式ドキュメントのチュートリアルを完成させてみましょう。進めながら自由にコードを書き換えてみてください。時間内に完成できなくても大丈夫です！ この演習の目的は、特定のレコードを題材に、これまでの要素を「すべて統合する」とどのような形になるのかを体感してもらうことにあります。
