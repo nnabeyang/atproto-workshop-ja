@@ -1,33 +1,33 @@
-# Backfilling
+# バックフィル
 
-Now, to contrast with using backlinks, you're going to *backfill* some records. This is the heavier-weight solution — actually replicating AT records from the network to a local database so you can serve them.
+バックリンクの利用とは対照的に、今回はレコードの **バックフィル（Backfill）** を行います。これはより大掛かりな解決策であり、ネットワーク上の AT レコードを実際にローカルデータベースへと複製し、それらを自ら提供できるようにする手法です。
 
-This is a core principal of atproto — anyone can backfill a complete copy of the network, whether they want to use it for research or anything else. However, that would be a double-digit number of TB right now, not what we want for our exercise.
+これは atproto の中核となる原則の一つです。研究目的であれ何であれ、誰でもネットワークの完全なコピーをバックフィルすることが認められています。ただし、現状の全データ量は 2桁テラバイトに達しており、今回の演習で扱うには現実的ではありません。
 
-In this case, we're only going to backfill a relatively small set of records matching some criteria.
+そこで今回は、特定の条件に一致する、比較的少数のレコードのみをバックフィルします。
 
-The first thing we'll do here is run `tap` — our tool for [backfilling records](https://atproto.com/guides/backfilling). `tap` is already installed in this workspace, so you'll just need to do `tap run` in one terminal:
+まず、[レコードのバックフィル](https://atproto.com/guides/backfilling)をするためのツールである `tap` を実行しましょう。 `tap` はこのワークスペースにインストール済みですので、1つ目のターミナルで `tap run` を実行してください:
 
 ```bash
 tap run --disable-acks=true
 ```
 
-Now, in another terminal, we'll run a sample feed generator architecture. Feed generators are a good use case for backfilling, because they require you to actually monitor the network, grab some records, then rebroadcast the ones you want to serve according to your feed algorithm.
+次に、別のターミナルでフィードジェネレーターのサンプルを実行します。フィードジェネレーターはバックフィルの代表的なユースケースです。ネットワークを監視してレコードを取り込み、独自のアルゴリズムに従って、配信したいレコードをエンドポイントから再配信する必要があるからです。
 
-To run this script, first install packages with `npm` from this directory:
+このスクリプトを実行するために、まずはこのディレクトリで依存パッケージをインストールしましょう:
 
 ```bash
 cd /workspace/exercises/6-tap
 npm i
 ```
 
-Then, run the script with `npx tsx src/index.ts`:
+インストールが終わったら、次のコマンドでスクリプトを実行します:
 
 ```bash
 npx tsx src/index.ts 
 ```
 
-You'll see the feed generator's startup output, and then some posts will be logged to your terminal!
+フィードジェネレーターの起動ログが表示された後、いくつかの投稿がターミナルに流れてくるはずです。
 
 ```
 Indexer connected to Tap server
@@ -58,10 +58,10 @@ CREATE at://did:plc:ragtjsm2j2vknwkz3zp4oxrd/app.bsky.feed.post/3jux7x2uvip2v
   ⭐ Added to index (2 total)
 ```
 
-As before, you can change these arguments, if you want to broadcast a feed with some different search terms, from a different user's posts:
+異なる検索ワードを指定したり、特定のユーザーの投稿からフィードを生成したりしたい場合は、次のように環境変数や引数を変更して実行できます:
 
 ```bash
 FEED_SEARCH_TERMS="Zangief" npx tsx src/index.ts "did:plc:vmt7o7y6titkqzzxav247zrn"
 ```
 
-We won't get into the whole feed generator architecture in the time that we have today, but you can find a complete tutorial at https://atproto.com/guides/custom-feed-tutorial. Can you think of any other use cases for tap?
+限られた時間内では、フィードジェネレーターのアーキテクチャ全体を詳しく解説することはできませんが、詳細なチュートリアルを https://atproto.com/guides/custom-feed-tutorial で確認いただけます。さて、tap を使った他のユースケースとして、どのようなものが思い浮かびますか？
