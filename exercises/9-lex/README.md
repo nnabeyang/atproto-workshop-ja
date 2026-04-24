@@ -1,10 +1,10 @@
-# Lexicons
+# レキシコン
 
-If you were present for the preceding workshop, one of our exercises involved reading from the network without authenticating.
+前回のワークショップに参加された方は、認証なしでネットワークからデータを読み取る演習を行ったことを覚えているかもしれません。
 
-We skipped a step when we were setting up that project earlier — installing and building Lexicons.
+先ほどそのプロジェクトをセットアップした際、あえて一つの手順をスキップしました。それが「レキシコンのインストールとビルド」です。
 
-Here's the what source of that file looks like:
+ソースファイルのコードは以下のようになっています:
 
 ```ts
 import { Client } from '@atproto/lex'
@@ -31,19 +31,19 @@ async function main() {
 main()
 ```
 
-After doing an `npm i` to install dependencies, you might notice that you still have one broken import here — this line: `import * as app from './lexicons/app.js'`.
+`npm i` で依存関係をインストールした後でも、まだ1箇所、インポートエラーが出ている行があることに気づくでしょう。この行です： `import * as app from './lexicons/app.js'`
 
-The way our Typescript SDK, `lex` works, is by allowing you to resolve, install, and build Lexicons published anywhere across the Atmosphere to call in your project. Here, you can see we use both `app.bsky.feed.post` and `app.bsky.actor.getProfile`. That means that you can do:
+TypeScript SDKである `lex` の仕組みは、Atmosphere上のどこに公開されているレキシコンでも、それを解決・インストールし、ビルドしてプロジェクト内で呼び出せるようにするものです。このコードでは、`app.bsky.feed.post` と `app.bsky.actor.getProfile` を使用しています。つまり、以下のコマンドを実行すればよいのです:
 
 ```bash
 lex install app.bsky.feed.post app.bsky.actor.getProfile
 lex build
 ```
 
-And that should resolve your missing import, and let you run the script as before:
+これでインポートエラーが解消され、スクリプトは実行可能になります:
 
 ```bash
 npx tsx src/index.ts
 ```
 
-Why the additional step? Because this lets us give first-class support to *all* Lexicons — including Lexicons that you might have just created yourself!
+なぜこの手順が必要なのでしょうか？それは、この仕組みによって **あらゆる** レキシコンをファーストクラスとしてサポートできるからです。そこには、あなたが今作ったばかりの独自のレキシコンと、公式のレキシコンとの間に一切の区別はありません。
