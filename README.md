@@ -1,5 +1,5 @@
 # Atmosphereワークショップのコードリポジトリ
-このリポジトリには、*Consuming the Atmosphere* および *Creating the Atmosphere* ワークショップで使用される演習が含まれています。
+このリポジトリは、[bluesky-social/workshop-codespace](https://github.com/bluesky-social/workshop-codespace)の日本語翻訳版です。*Consuming the Atmosphere* および *Creating the Atmosphere* ワークショップで使用される演習が含まれています。
 
 これらのワークショップで使用したスライドはこちらです:
 - [Consuming the Atmosphere](https://docs.google.com/presentation/d/1X0YK4-08p2ujrv5WIT1Fsr8v7FBuSe2VgjOFQdLHi2M/edit?usp=sharing)
