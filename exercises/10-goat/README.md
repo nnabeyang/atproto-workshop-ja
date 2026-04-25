@@ -1,60 +1,60 @@
 # Goat
 
-In exercise 9, we used `lex` to install and build Lexicons that already exist. Now let's create our own.
+演習9では、`lex` を使って既存のレキシコンをインストールし、ビルドしました。今度は、自分たちで独自のレキシコンを作成してみましょう。
 
-The good news: you don't have to write JSON from scratch. The `goat` CLI can scaffold Lexicons for you, and its linter will tell you when you've done something wrong.
+幸いなことに、JSONをゼロから手書きする必要はありません。`goat` CLIを使えばレキシコンの雛形を自動生成でき、記述ミスがあればリンターが教えてくれます。
 
-First, let's pull down some existing Lexicons to see how they're structured:
+まずは、既存のレキシコンをいくつか取得して、その構造を見てみましょう:
 
 ```bash
 goat lex pull app.bsky.feed.post
 goat lex pull xyz.statusphere.status
 ```
 
-Take a look at those files. Notice how they define fields, types, and descriptions.
+取得したファイルを確認してみてください。フィールド、型、そして説明文（description）がどのように定義されているかに注目してください。
 
-Now lint them to see what `goat` checks for:
+次に、`goat` がどのような項目をチェックしているか、リンターを実行して確認してみましょう:
 
 ```bash
 goat lex lint lexicons/
 ```
 
-## Create your own Lexicon
+## 独自のレキシコンを作成する
 
-Here's where it gets fun. Pick a silly domain to model — something small but with at least 2-3 fields. Some ideas:
+ここからが本番です。何か面白いドメインをモデル化してみましょう。小規模なもので構いませんが、2〜3個のフィールドを含めるようにしてください。いくつかアイデアを挙げます:
 
-- **Houseplant tracker** — species, last watered date, happiness level
-- **Sandwich ratings** — ingredients, rating, review
-- **Book log** — title, author, status (reading/finished/abandoned)
-- **Coffee shop reviews** — name, location, wifi quality, outlet availability
+- **観葉植物トラッカー** — 種類、最終水やり日、生育状態
+- **サンドイッチ評価** — 材料、評価、レビュー
+- **読書記録** — タイトル、著者、読了状況（読書中／読了／積読）
+- **カフェレビュー** — 店名、場所、Wi-Fi接続状況、コンセントの有無
 
-Use `goat` to scaffold your record. Replace `your.domain` with something like `dev.yourname`:
+`goat` を使って、レコードの骨組みを作成します。`your.domain` の部分は、（自身が所有しているドメインを想定して) `dev.yourname` に置き換えてください:
 
 ```bash
 goat lex new record your.domain.plant
 ```
 
-This creates a skeleton. Now open it up and add your fields. The [Lexicon Style Guide](https://atproto.com/guides/lexicon-style-guide) has the rules, but the key ones are:
+これでスケルトンファイルが作成されます。ファイルを開いて、フィールドを追加してみましょう。[Lexiconスタイルガイド](https://atproto.com/ja/guides/lexicon-style-guide)にルールが記載されていますが、特に重要なポイントは以下の通りです:
 
-- Use `lowerCamelCase` for field names
-- Add `description` to every field
-- Don't make fields `required` unless you mean it
-- Use objects in arrays (not raw strings/numbers) so you can extend later
+- フィールド名には **ローワーキャメルケース** を使用する
+- すべてのフィールドに **`description`** を追加する
+- 本当に必要な場合を除き、フィールドを **必須** にしない
+- 配列には（生の文字列や数値ではなく）**オブジェクト** を使用する（後で拡張しやすくするため）
 
-You can also experiment with https://prototypey.org/. 
+https://prototypey.org/ も試してみてください。
 
-Finally, you could publish your Lexicon to your own repository, so others can install it:
+最後に、作成したレキシコンを自分のリポジトリに公開すれば、他のユーザーもそれを利用できるようになります:
 
 ```bash
 goat account login
 goat lex publish lexicons/your.domain.plant.json
 ```
 
-Lexicon resolution works by using DNS. You probably don't own `domain.your`, so this won't work out of the box, but if you *did* own that domain and connect it to an atproto account, anyone could `lex install your.domain.plant` and get types for your schema:
+レキシコンの解決にはDNSが利用されます。おそらく `domain.your` は所有していないため、そのままでは動作しませんが、もし実際にドメインを所有しており、それを atproto アカウントに紐付けていれば、誰でも `lex install your.domain.plant` を実行して、あなたが定義したスキーマの型情報を取得できるようになります:
 
 ```bash
 lex install your.domain.plant
 lex build
 ```
 
-You've gone full circle: from consuming Lexicons to publishing them.
+これで、レキシコンを「使う側」から「作る側」まで、一連のサイクルを完走しました。
