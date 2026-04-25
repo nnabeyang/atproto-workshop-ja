@@ -1,18 +1,18 @@
-# Building an Agent
+# エージェントの構築
 
-For our first exercise for this Workshop portion, we're going to follow the [build an agent](https://atproto.com/guides/bot-tutorial) tutorial from our docs.
+このワークショップの最初の演習では、[公式ドキュメント](https://atproto.com/ja)にある『[エージェント作成](https://atproto.com/ja/guides/bot-tutorial)』チュートリアルに沿って進めていきます。
 
-*You will likely want to register a new account for this tutorial so you don't spam your existing followers. Also, you can skip [Part 1](https://atproto.com/guides/bot-tutorial#part-1-lexicons) — we'll explain why later.*
+*既存のフォロワーのタイムラインをテスト投稿で埋めてしまわないよう（スパム状態を避けるため）、このチュートリアル用に新しいアカウントを作成することをお勧めします。また、[パート1](https://atproto.com/ja/guides/bot-tutorial#part-1-lexicons) はスキップしても構いません。理由は後ほど説明します。*
 
-Start by installing packages with `npm` from this directory:
+まずはこのディレクトリで依存パッケージをインストールしましょう:
 
 ```bash
 cd /workspace/exercises/8-agent
 npm i
 ```
 
-Then, proceed from [Part 2](https://atproto.com/guides/bot-tutorial#part-2-create-a-bot) of the tutorial.
+準備ができたら、チュートリアルの[パート2](https://atproto.com/ja/guides/bot-tutorial#part-2-create-a-bot)から進めてください。
 
-In this exercise, you'll deploy a standalone bot that can create records on the network, and add functionality for it to get existing records and reply to them. Feel free to deviate from the existing tutorial in [Part 5](https://atproto.com/guides/bot-tutorial#part-5-from-bot-to-agent) — once you have the bot working and posting, you can have it interact with other users in any way you can think of!
+この演習では、ネットワーク上にレコードを作成できるスタンドアロン・ボットをデプロイし、既存のレコードを取得して返信する機能を追加します。[パート5](https://atproto.com/ja/guides/bot-tutorial#part-5-from-bot-to-agent)以降は、チュートリアルの通りでなくても構いません。ボットが正常に動作して投稿できるようになったら、自由にカスタマイズして、思いつく限りの方法で他のユーザーと交流させてみてください！
 
-Just remember our rules: If your bot interacts with other users, please only interact (like, repost, reply, etc.) if the user has tagged the bot account. It should be an opt-in interaction.
+ただし、一点だけルールを守ってください。ボットが他のユーザーとやり取り（いいね、リポスト、返信など）を行うのは、**そのユーザーがボットのアカウントをタグ付けしている場合のみ** にしてください。あくまで相手が望んだ場合のみ反応するようにしましょう。
