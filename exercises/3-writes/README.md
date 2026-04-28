@@ -50,7 +50,7 @@ cd /workspace/exercises/3-writes
 npm i
 ```
 
-Then, run the script with `npx tsx src/index.ts`:
+Then, run the script with:
 
 ```bash
 npx tsx src/index.ts your-username your-password
