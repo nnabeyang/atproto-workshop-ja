@@ -7,7 +7,7 @@ For our first exercise for this Workshop portion, we're going to follow the [bui
 Start by installing packages with `npm` from this directory:
 
 ```bash
-cd /workspace/exercises/8-agent
+cd /workspace/exercises/08-agent
 npm i
 ```
 

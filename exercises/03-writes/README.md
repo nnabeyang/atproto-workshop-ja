@@ -46,7 +46,7 @@ One thing to note is that this isn't very different from reading existing record
 To run this script, first install packages with `npm` from this directory:
 
 ```bash
-cd /workspace/exercises/3-writes
+cd /workspace/exercises/03-writes
 npm i
 ```
 

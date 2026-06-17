@@ -32,7 +32,7 @@ main()
 To run this script, first install packages with `npm` from this directory:
 
 ```bash
-cd /workspace/exercises/2-reads
+cd /workspace/exercises/02-reads
 npm i
 ```
 
