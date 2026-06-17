@@ -1,7 +1,7 @@
 {
   "name": "02-reads",
   "version": "1.0.0",
-  "description": "atproto workshop exercise 2",
+  "description": "AT Protocol workshop exercise 2 — Reads",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
