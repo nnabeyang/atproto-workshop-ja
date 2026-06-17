@@ -1,7 +1,7 @@
 {
-  "name": "2-reads",
+  "name": "06-tap",
   "version": "1.0.0",
-  "description": "atproto workshop exercise 2",
+  "description": "Now, to contrast with using backlinks, you're going to *backfill* some records. This is the heavier-weight solution — actually replicating AT records from the network to a local database so you can serve them.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,12 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "@atproto/lex": "^0.0.20",
-    "@atproto/lex-password-session": "^0.0.8",
+    "@atproto/lex-server": "^0.0.12",
+    "@atproto/tap": "^0.2.8",
     "@types/node": "^25.3.3",
-    "cron": "^4.4.0",
     "dotenv": "^17.3.1",
     "typescript": "^5.9.3"
   }

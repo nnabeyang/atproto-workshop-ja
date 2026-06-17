@@ -1,5 +1,5 @@
 {
-  "name": "8-agent",
+  "name": "08-agent",
   "version": "1.0.0",
   "description": "For our first exercise for this Workshop portion, we're going to follow the [build an agent](https://atproto.com/guides/bot-tutorial) tutorial from our docs.",
   "main": "index.js",

@@ -32,7 +32,7 @@ main()
 このスクリプトを実行するために、まずはこのディレクトリで依存パッケージをインストールしましょう:
 
 ```bash
-cd /workspace/exercises/2-reads
+cd /workspace/exercises/02-reads
 npm i
 ```
 

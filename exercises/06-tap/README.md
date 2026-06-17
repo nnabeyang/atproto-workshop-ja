@@ -17,7 +17,7 @@ tap run --disable-acks=true
 このスクリプトを実行するために、まずはこのディレクトリで依存パッケージをインストールしましょう:
 
 ```bash
-cd /workspace/exercises/6-tap
+cd /workspace/exercises/06-tap
 npm i
 ```
 

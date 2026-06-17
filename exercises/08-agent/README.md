@@ -7,7 +7,7 @@
 まずはこのディレクトリで依存パッケージをインストールしましょう:
 
 ```bash
-cd /workspace/exercises/8-agent
+cd /workspace/exercises/08-agent
 npm i
 ```
 

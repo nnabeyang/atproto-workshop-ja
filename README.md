@@ -13,15 +13,15 @@
 
 ディレクトリ                         | 演習
 :--------------------------------- | :-------------------------------------------------------
-`exercises/1-firehose`             | [演習 1](exercises/1-firehose/README.md)
-`exercises/2-reads`                | [演習 2](exercises/2-reads/README.md)
-`exercises/3-writes`               | [演習 3](exercises/3-writes/README.md)
-`exercises/4-pds`                  | [演習 4](exercises/4-pds/README.md)
-`exercises/5-backlinks`            | [演習 5](exercises/5-backlinks/README.md)
-`exercises/6-tap`                  | [演習 6](exercises/6-tap/README.md)
-`exercises/7-statusphere`          | [演習 7](exercises/7-statusphere/README.md)
-`exercises/8-agent`                | [演習 8](exercises/8-agent/README.md)
-`exercises/9-lex`                  | [演習 9](exercises/9-lex/README.md)
+`exercises/01-firehose`             | [演習 1](exercises/01-firehose/README.md)
+`exercises/02-reads`                | [演習 2](exercises/02-reads/README.md)
+`exercises/03-writes`               | [演習 3](exercises/03-writes/README.md)
+`exercises/04-pds`                  | [演習 4](exercises/04-pds/README.md)
+`exercises/05-backlinks`            | [演習 5](exercises/05-backlinks/README.md)
+`exercises/06-tap`                  | [演習 6](exercises/06-tap/README.md)
+`exercises/07-statusphere`          | [演習 7](exercises/07-statusphere/README.md)
+`exercises/08-agent`                | [演習 8](exercises/08-agent/README.md)
+`exercises/09-lex`                  | [演習 9](exercises/09-lex/README.md)
 `exercises/10-goat`                | [演習 10](exercises/10-goat/README.md)
 
 ## リファレンス

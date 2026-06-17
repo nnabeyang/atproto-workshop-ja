@@ -46,7 +46,7 @@ main()
 このスクリプトを実行するには、まずこのディレクトリから `npm` を使ってパッケージをインストールしてください:
 
 ```bash
-cd /workspace/exercises/3-writes
+cd /workspace/exercises/03-writes
 npm i
 ```
 
