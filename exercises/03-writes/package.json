@@ -1,5 +1,5 @@
 {
-  "name": "2-reads",
+  "name": "03-writes",
   "version": "1.0.0",
   "description": "atproto workshop exercise 2",
   "main": "index.js",

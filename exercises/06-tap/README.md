@@ -17,7 +17,7 @@ Now, in another terminal, we'll run a sample feed generator architecture. Feed g
 To run this script, first install packages with `npm` from this directory:
 
 ```bash
-cd /workspace/exercises/6-tap
+cd /workspace/exercises/06-tap
 npm i
 ```
 

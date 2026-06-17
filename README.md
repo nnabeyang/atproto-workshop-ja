@@ -13,15 +13,15 @@ Consider using a tool like https://www.slido.com/features-live-qa to gather ques
 
 Directory Name                     | Exercise
 :--------------------------------- | :-------------------------------------------------------
-`exercises/1-firehose`             | [Exercise 1](exercises/1-firehose/README.md)
-`exercises/2-reads`                | [Exercise 2](exercises/2-reads/README.md)
-`exercises/3-writes`               | [Exercise 3](exercises/3-writes/README.md)
-`exercises/4-pds`                  | [Exercise 4](exercises/4-pds/README.md)
-`exercises/5-backlinks`            | [Exercise 5](exercises/5-backlinks/README.md)
-`exercises/6-tap`                  | [Exercise 6](exercises/6-tap/README.md)
-`exercises/7-statusphere`          | [Exercise 7](exercises/7-statusphere/README.md)
-`exercises/8-agent`                | [Exercise 8](exercises/8-agent/README.md)
-`exercises/9-lex`                  | [Exercise 9](exercises/9-lex/README.md)
+`exercises/01-firehose`             | [Exercise 1](exercises/01-firehose/README.md)
+`exercises/02-reads`                | [Exercise 2](exercises/02-reads/README.md)
+`exercises/03-writes`               | [Exercise 3](exercises/03-writes/README.md)
+`exercises/04-pds`                  | [Exercise 4](exercises/04-pds/README.md)
+`exercises/05-backlinks`            | [Exercise 5](exercises/05-backlinks/README.md)
+`exercises/06-tap`                  | [Exercise 6](exercises/06-tap/README.md)
+`exercises/07-statusphere`          | [Exercise 7](exercises/07-statusphere/README.md)
+`exercises/08-agent`                | [Exercise 8](exercises/08-agent/README.md)
+`exercises/09-lex`                  | [Exercise 9](exercises/09-lex/README.md)
 `exercises/10-goat`                | [Exercise 10](exercises/10-goat/README.md)
 
 ## Reference
