@@ -1,0 +1,11 @@
+{
+  "generate": ["client"],
+  "module": "Sources/Reads/Lexicon",
+  "dependencies": [
+    {
+      "location": "file:.",
+      "lexicons": [{ "path": "lexicons" }],
+      "state": { "revision": "local" }
+    }
+  ]
+}
