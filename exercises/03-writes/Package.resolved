@@ -1,0 +1,141 @@
+{
+  "originHash" : "b9212b22fa2e03adc3b63b2600b66b834e48ced40d61e0c76e01b447ecf11d12",
+  "pins" : [
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "f2a627b84c1ff96f21ac2fcb623ab36142dd5512",
+        "version" : "1.10.0"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "6a52f3251125d74daf04fcbd5e6f08a75d074382",
+        "version" : "1.8.2"
+      }
+    },
+    {
+      "identity" : "swift-asn1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-asn1.git",
+      "state" : {
+        "revision" : "3b6410f7dee09eb33cdd26260c5fd47fda19b0e2",
+        "version" : "1.7.3"
+      }
+    },
+    {
+      "identity" : "swift-atproto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nnabeyang/swift-atproto.git",
+      "state" : {
+        "revision" : "0ad1137ffc8df3fca7f290f0a9d7adede93fa09c",
+        "version" : "0.44.5"
+      }
+    },
+    {
+      "identity" : "swift-bases",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-bases.git",
+      "state" : {
+        "revision" : "f6f3ddc88aef6fd39494a35a7e95cd93c1a63e79",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "swift-cbor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nnabeyang/swift-cbor.git",
+      "state" : {
+        "revision" : "d872ccc134098fc0cff616e4f2a79c0d8ab73cef",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "swift-cid",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-cid",
+      "state" : {
+        "revision" : "4c38c05f6e6c3e67a518d00f9bd9188d5ab2baf2",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "swift-crypto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-crypto",
+      "state" : {
+        "revision" : "1c80d3aff53fedc445b60692980cb4f19a618657",
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "swift-http-types",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-http-types.git",
+      "state" : {
+        "revision" : "bff4b6903cdc99dda49649dd52f46c11cfd3ed50",
+        "version" : "1.8.0"
+      }
+    },
+    {
+      "identity" : "swift-multibase",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-multibase.git",
+      "state" : {
+        "revision" : "931b5a64bb773c585a947d9f25cc158d433bd555",
+        "version" : "0.2.3"
+      }
+    },
+    {
+      "identity" : "swift-multicodec",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-multicodec.git",
+      "state" : {
+        "revision" : "ded4ad7437292c7ce61c1076b7367a1405fd415e",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "swift-multihash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-multihash.git",
+      "state" : {
+        "revision" : "6a42903314c1433c832f91ab02a285d3a0a061b6",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "swift-secp256k1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/21-DOT-DEV/swift-secp256k1",
+      "state" : {
+        "revision" : "e70a10e036a55fffea31568f0af92d69b6d449cd",
+        "version" : "0.23.2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "79e4b74a295b6eb74a8b585e3a39d29e70c1dbd1",
+        "version" : "603.0.2"
+      }
+    },
+    {
+      "identity" : "swift-varint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-varint.git",
+      "state" : {
+        "revision" : "10254c96e8b979fe39775e28524c5da698278055",
+        "version" : "0.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}

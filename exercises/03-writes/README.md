@@ -2,84 +2,91 @@
 
 This is going to be similar to Exercise 2, but this time, you'll actually log in and post — i.e., create new records on the network.
 
-Here, in `src/index.ts`, we have another little script:
+Here, in `Sources/Writes/main.swift`, we have another little program:
 
-```ts
-import { Client } from '@atproto/lex'
-import type { DatetimeString } from '@atproto/syntax'
-import { PasswordSession } from '@atproto/lex-password-session'
-import * as app from './lexicons/app.js'
-import * as xyz from './lexicons/xyz.js'
+```swift
+import Foundation
+import SwiftAtproto
 
-const args = process.argv.slice(2)
-const username = args[0] ?? 'your-handle.bsky.social'
-const password = args[1] ?? 'your-app-password'
-const command = args[2] ?? 'statusphere'
-const contents = args[3] ?? '🍕'
+let appviewClient = Client("https://public.api.bsky.app")
 
-async function main() {
-    const result = await PasswordSession.login({
-        service: 'https://bsky.social', // or your PDS host
-        identifier: username,
-        password: password,
-    })
+let args = CommandLine.arguments.dropFirst()
+let username = args.first ?? "your-handle.example.com"
+let password = args.dropFirst().first ?? "your-app-password"
+let command = args.dropFirst(2).first ?? "statusphere"
+let contents = args.dropFirst(3).first ?? "🍕"
 
-    const client = new Client(result)
-    const createdAt = (new Date().toISOString() as DatetimeString)
-
-    if (command === 'bsky') {
-        const posts = await client.create(app.bsky.feed.post, { text: contents, createdAt: createdAt })
-        console.log(posts);
-    } else {
-        const profile = await client.create(xyz.statusphere.status, { status: contents, createdAt })
-        console.log(profile);
-    }
+/// Prints a response as indented JSON.
+func printJSON(_ value: some Encodable) throws {
+  let encoder = JSONEncoder()
+  encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+  print(String(decoding: try encoder.encode(value), as: UTF8.self))
 }
 
-main()
+// Log in to the account's own PDS, found the same way as in exercise 2.
+var client = try await resolvePDS(username, appview: appviewClient)
+let session = try await client.ServerCreateSession(input: .init(identifier: username, password: password))
+client.accessJwt = session.accessJwt
+
+let createdAt = FormatString<Date>(Date())
+
+/// Writes a record to the logged-in account's repository.
+func create(_ record: some ATProtoRecord) async throws -> Com.Atproto.RepoCreateRecord.ResponseBody {
+  try await client.RepoCreateRecord(
+    input: .init(
+      collection: .init(rawValue: type(of: record).nsId),
+      record: .record(record),
+      repo: .init(rawValue: session.did.rawValue)
+    )
+  )
+}
+
+if command == "bsky" {
+  let post = try await create(App.Bsky.FeedPost.make(createdAt: createdAt, text: contents))
+  try printJSON(post)
+} else {
+  let status = try await create(Xyz.Statusphere.Status.make(createdAt: createdAt, status: contents))
+  try printJSON(status)
+}
 ```
 
-Some of this — like the use of `Client`, and the API calls — should be recognizable from the last exercise. This time, however, we're adding a login step, meaning that we're able to run `client.create()` commands to actually write new records!
+Some of this — like the `Client`, finding the PDS with `resolvePDS`, and the API calls — should be recognizable from the last exercise. This time, however, we're adding a login step with `com.atproto.server.createSession`, and sending the access token it returns with our calls, meaning that we're able to call `com.atproto.repo.createRecord` to actually write new records!
 
-One thing to note is that this isn't very different from reading existing records — it's a lot like the different between an HTTP GET and a POST. Reading and writing are similar API calls.
+One thing to note is that this isn't very different from reading existing records — it's a lot like the difference between an HTTP GET and a POST. Reading and writing are similar API calls.
 
-To run this script, first install packages with `npm` from this directory:
+Log in with an app password rather than your account's own password. You can make one in the Bluesky app under Settings > Privacy and security > App passwords.
+
+To run this program, build and run it with `swift run` from this directory, giving your handle and app password:
 
 ```bash
 cd /workspace/exercises/03-writes
-npm i
+swift run writes your-handle your-app-password
 ```
 
-Then, run the script with:
-
-```bash
-npx tsx src/index.ts your-username your-password
-```
-
-Now, don't worry — by default, this isn't going to create new Bluesky posts. Instead, we're defaulting to a different record Lexicon — `xyz.statusphere.status` instead of `app.bsky.feed.post`. This is used for toy examples, and won't be picked up by any real-world apps.
+Now, don't worry — by default, this isn't going to create new Bluesky posts. Instead, we're defaulting to a different record Lexicon — `xyz.statusphere.status` instead of `app.bsky.feed.post`. This is used for toy examples, and won't be picked up by any real-world apps.
 
 This should produce a result like:
 
 ```
 {
-  uri: 'at://did:plc:vmt7o7y6titkqzzxav247zrn/xyz.statusphere.status/3mgbdr5jiqf2p',
-  cid: 'bafyreidbqmykcc3q2awfuaar7sxjguqfnuq4oyqarbeajwqlnlbqrejtcu',
-  commit: {
-    cid: 'bafyreigvagsw5vzvvjcfryppiozfun4dk3afuqy6lwgmzzq6jkanacrvbu',
-    rev: '3mgbdr5jpl52p'
+  "cid" : "bafyreidfqlj4yrhp4l4vx6kfqctay37qgwnbsrsq522q73cvdzaml6fyr4",
+  "commit" : {
+    "cid" : "bafyreihgrl2n2zk4fds4sdakmd5wnzlo2zzzi25qqdjjkc4kfdzl4neonu",
+    "rev" : "3mybawhauws2t"
   },
-  validationStatus: 'unknown'
+  "uri" : "at://did:plc:l3djuf7oyovspyoyxpziojbp/xyz.statusphere.status/3mybawhaq2k2t",
+  "validationStatus" : "unknown"
 }
 ```
 
-As usual, we can pop that at:// URI into a browser that supports browsing AT records to see what it looks like on the PDS side: https://pdsls.dev/at://did:plc:vmt7o7y6titkqzzxav247zrn/xyz.statusphere.status/3mgbdr5jiqf2p.
+As usual, we can pop that at:// URI into a browser that supports browsing AT records to see what it looks like on the PDS side: https://pdsls.dev/at://did:plc:l3djuf7oyovspyoyxpziojbp/xyz.statusphere.status/3mybawhaq2k2t.
 
 We created a record with these contents: 🍕
 
 If you wanted to use this app to actually post for real, just add some additional arguments!
 
 ```bash
-npx tsx src/index.ts your-username your-password bsky "wow I love this great workshop by @alex.bsky.team"`
+swift run writes your-handle your-app-password bsky "wow I love this great workshop by @alex.bsky.team"
 ```
 
 Note: I am not responsible for you spamming your followers.
