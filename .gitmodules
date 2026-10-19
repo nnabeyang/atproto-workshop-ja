@@ -1,3 +1,4 @@
 [submodule "exercises/07-statusphere/sample-app"]
 	path = exercises/07-statusphere/sample-app
-	url = https://github.com/bluesky-social/nextjs-oauth-tutorial
+	url = https://github.com/nnabeyang/statusphere-swift
+	branch = main
