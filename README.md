@@ -28,14 +28,14 @@ Directory Name                     | Exercise
 You can refer to the [atproto docs](https://atproto.com) as you work through this course.
 
 ## Exercise Environment for this Course
-You can launch an exercise environment for this course using GitHub Codespaces.
+You can launch an exercise environment for this course using GitHub Codespaces. The environment is built from `.devcontainer/Dockerfile` when you create a codespace, which takes a few minutes, so create it before the workshop starts.
 
-Alternatively, you can clone this repository down locally to run the exercises on your own. These are the commands that are run to install dependencies into this environment:
+Alternatively, you can clone this repository down locally to run the exercises on your own. The exercises use Swift 6.4: install it from [swift.org](https://www.swift.org/install/), or on a Mac, install Xcode 27, which includes it. Exercise 7 builds an iOS app, so it needs a Mac with Xcode 27. These are the commands that are run to install the other dependencies into this environment:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # install homebrew
 brew install websocat jq goat node go pnpm
-npm i -g @atproto/lex tsx
+npm i -g @atproto/lex tsx # for the exercises that use TypeScript
 go install github.com/bluesky-social/indigo/cmd/tap@latest
 ```
 
