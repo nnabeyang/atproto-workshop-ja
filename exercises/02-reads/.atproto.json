@@ -1,0 +1,45 @@
+{
+  "generate": ["client"],
+  "module": "Sources/Reads/Lexicon",
+  "dependencies": [
+    {
+      "location": "https://github.com/bluesky-social/atproto.git",
+      "lexicons": [
+        {
+          "path": "lexicons/app/bsky",
+          "nsIds": [
+            "app.bsky.actor.defs",
+            "app.bsky.actor.getProfile",
+            "app.bsky.embed.defs",
+            "app.bsky.embed.external",
+            "app.bsky.embed.gallery",
+            "app.bsky.embed.images",
+            "app.bsky.embed.record",
+            "app.bsky.embed.recordWithMedia",
+            "app.bsky.embed.video",
+            "app.bsky.feed.defs",
+            "app.bsky.feed.post",
+            "app.bsky.feed.postgate",
+            "app.bsky.feed.threadgate",
+            "app.bsky.graph.defs",
+            "app.bsky.labeler.defs",
+            "app.bsky.notification.defs",
+            "app.bsky.richtext.facet"
+          ]
+        },
+        {
+          "path": "lexicons/com/atproto",
+          "nsIds": [
+            "com.atproto.identity.resolveHandle",
+            "com.atproto.label.defs",
+            "com.atproto.moderation.defs",
+            "com.atproto.repo.defs",
+            "com.atproto.repo.listRecords",
+            "com.atproto.repo.strongRef"
+          ]
+        }
+      ],
+      "state": { "tag": "@atproto/api@0.27.0" }
+    }
+  ]
+}

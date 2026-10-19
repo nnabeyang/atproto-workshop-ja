@@ -24,3 +24,8 @@
 .*.swp
 
 node_modules
+
+# Swift
+.build/
+.swiftpm/
+.lexicons/

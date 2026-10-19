@@ -1,0 +1,49 @@
+{
+  "dependencies" : [
+    {
+      "lexicons" : [
+        {
+          "nsIds" : [
+            "app.bsky.actor.defs",
+            "app.bsky.actor.getProfile",
+            "app.bsky.embed.defs",
+            "app.bsky.embed.external",
+            "app.bsky.embed.gallery",
+            "app.bsky.embed.images",
+            "app.bsky.embed.record",
+            "app.bsky.embed.recordWithMedia",
+            "app.bsky.embed.video",
+            "app.bsky.feed.defs",
+            "app.bsky.feed.post",
+            "app.bsky.feed.postgate",
+            "app.bsky.feed.threadgate",
+            "app.bsky.graph.defs",
+            "app.bsky.labeler.defs",
+            "app.bsky.notification.defs",
+            "app.bsky.richtext.facet"
+          ],
+          "path" : "lexicons/app/bsky"
+        },
+        {
+          "nsIds" : [
+            "com.atproto.identity.resolveHandle",
+            "com.atproto.label.defs",
+            "com.atproto.moderation.defs",
+            "com.atproto.repo.defs",
+            "com.atproto.repo.listRecords",
+            "com.atproto.repo.strongRef"
+          ],
+          "path" : "lexicons/com/atproto"
+        }
+      ],
+      "location" : "https://github.com/bluesky-social/atproto.git",
+      "state" : {
+        "revision" : "612ae323111b366538acbb95fa0c5a496536b8ab",
+        "tag" : "@atproto/api@0.27.0"
+      }
+    }
+  ],
+  "generator" : "0.44.5",
+  "module" : "Sources/Reads/Lexicon",
+  "originHash" : "6a02034f7b537e3ff150a259cf17fb108f03768d4fef15974742258ebabf1beb"
+}
