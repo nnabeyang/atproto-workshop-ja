@@ -2,3 +2,7 @@
 	path = exercises/07-statusphere/sample-app
 	url = https://github.com/nnabeyang/statusphere-swift
 	branch = main
+[submodule "exercises/08-agent/bot"]
+	path = exercises/08-agent/bot
+	url = https://github.com/nnabeyang/bsky-bot-swift
+	branch = main
