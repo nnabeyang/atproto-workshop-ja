@@ -1,6 +1,6 @@
 # Goat
 
-In exercise 9, we used `lex` to install and build Lexicons that already exist. Now let's create our own.
+In exercise 9, we used `lex` to install Lexicons that already exist, and generated Swift code from them. Now let's create our own.
 
 The good news: you don't have to write JSON from scratch. The `goat` CLI can scaffold Lexicons for you, and its linter will tell you when you've done something wrong.
 
@@ -50,11 +50,14 @@ goat account login
 goat lex publish lexicons/your.domain.plant.json
 ```
 
-Lexicon resolution works by using DNS. You probably don't own `domain.your`, so this won't work out of the box, but if you *did* own that domain and connect it to an atproto account, anyone could `lex install your.domain.plant` and get types for your schema:
+Lexicon resolution works by using DNS. You probably don't own `domain.your`, so this won't work out of the box, but if you *did* own that domain and connect it to an atproto account, anyone could `lex install your.domain.plant` and generate Swift code for your schema, just like in exercise 9:
 
 ```bash
 lex install your.domain.plant
-lex build
+swift package --disable-experimental-prebuilts plugin \
+  --allow-writing-to-package-directory \
+  --allow-network-connections all:443 \
+  swift-atproto
 ```
 
 You've gone full circle: from consuming Lexicons to publishing them.
