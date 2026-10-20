@@ -5,7 +5,7 @@ let appviewClient = Client("https://public.api.bsky.app")
 
 let args = CommandLine.arguments.dropFirst()
 
-let defaultActor = "alex.bsky.team"
+let defaultActor = "jp.bsky.app"
 let cmdPosts = "posts"
 
 let (actor, command) =

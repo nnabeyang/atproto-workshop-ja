@@ -1,10 +1,10 @@
-# Lexicons
+# レキシコン
 
-If you were present for the preceding workshop, one of our exercises involved reading from the network without authenticating.
+前回のワークショップに参加された方は、認証なしでネットワークからデータを読み取る演習を行ったことを覚えているかもしれません。
 
-We skipped a step when we were setting up that project earlier — installing Lexicons and generating code from them.
+先ほどそのプロジェクトをセットアップした際、あえて一つの手順をスキップしました。それが「レキシコンのインストールと、そこからのコード生成」です。
 
-This directory has the same program as Exercise 2. Here's what `Sources/Reads/main.swift` looks like:
+このディレクトリには、演習2と同じプログラムがあります。`Sources/Reads/main.swift` のコードは以下のようになっています:
 
 ```swift
 import Foundation
@@ -14,7 +14,7 @@ let appviewClient = Client("https://public.api.bsky.app")
 
 let args = CommandLine.arguments.dropFirst()
 
-let defaultActor = "alex.bsky.team"
+let defaultActor = "jp.bsky.app"
 let cmdPosts = "posts"
 
 let (actor, command) =
@@ -40,7 +40,7 @@ if command == cmdPosts {
 }
 ```
 
-This time, though, `Sources/Reads/Lexicon` is empty. If you try to build it, you'll get errors like these:
+ただし今回は、`Sources/Reads/Lexicon` が空です。ビルドしようとすると、次のようなエラーが出ます:
 
 ```bash
 cd /workspace/exercises/09-lex
@@ -52,17 +52,17 @@ Sources/Reads/Client.swift:9:16: error: cannot find type 'XRPCCallable' in scope
 Sources/Reads/Resolve.swift:17:29: error: value of type 'Client' has no member 'IdentityResolveHandle'
 ```
 
-`XRPCCallable` and methods like `ActorGetProfile` and `IdentityResolveHandle` aren't written by hand — they're generated from Lexicons.
+`XRPCCallable` や、`ActorGetProfile`、`IdentityResolveHandle` といったメソッドは手で書いたものではなく、レキシコンから生成されるものです。
 
-Our TypeScript SDK comes with a `lex` CLI that lets you resolve and install Lexicons published anywhere across the Atmosphere, so that you can call them in your project. Installing doesn't depend on the language you use, so we can use it from Swift too. Here, you can see we use `app.bsky.actor.getProfile`, `app.bsky.feed.post`, `com.atproto.repo.listRecords`, and `com.atproto.identity.resolveHandle`. That means that you can do:
+TypeScript SDKに付属する `lex` CLI を使うと、Atmosphere上のどこに公開されているレキシコンでも、それを解決・インストールしてプロジェクト内で呼び出せるようになります。インストールは使う言語に依存しないので、Swift からも使えます。このコードでは、`app.bsky.actor.getProfile`、`app.bsky.feed.post`、`com.atproto.repo.listRecords`、`com.atproto.identity.resolveHandle` を使用しています。つまり、以下のコマンドを実行すればよいのです:
 
 ```bash
 lex install app.bsky.actor.getProfile app.bsky.feed.post com.atproto.repo.listRecords com.atproto.identity.resolveHandle
 ```
 
-This finds each Lexicon from its NSID, along with every Lexicon those refer to, and saves them as JSON files in `lexicons/`. It also records what it installed in `lexicons.json`.
+これは NSID から各レキシコンを探し、それらが参照するすべてのレキシコンとあわせて、JSON ファイルとして `lexicons/` に保存します。インストールした内容は `lexicons.json` にも記録されます。
 
-Next, generate Swift code from those files with [swift-atproto](https://github.com/nnabeyang/swift-atproto). Its settings are in `.atproto.json`, which reads every Lexicon in `lexicons/` and writes the code to `Sources/Reads/Lexicon`:
+次に、[swift-atproto](https://github.com/nnabeyang/swift-atproto) を使って、これらのファイルから Swift のコードを生成します。設定は `.atproto.json` にあり、`lexicons/` にあるすべてのレキシコンを読み込んで、コードを `Sources/Reads/Lexicon` に書き出します:
 
 ```json
 {
@@ -78,7 +78,7 @@ Next, generate Swift code from those files with [swift-atproto](https://github.c
 }
 ```
 
-Run its package plugin:
+パッケージプラグインを実行します:
 
 ```bash
 swift package --disable-experimental-prebuilts plugin \
@@ -87,10 +87,10 @@ swift package --disable-experimental-prebuilts plugin \
   swift-atproto
 ```
 
-And that should resolve your missing types, and let you run the program as before:
+これでエラーが解消され、プログラムは前と同じように実行できます:
 
 ```bash
 swift run reads
 ```
 
-Why the additional step? Because this lets us give first-class support to *all* Lexicons — including Lexicons that you might have just created yourself!
+なぜこの手順が必要なのでしょうか？それは、この仕組みによって **あらゆる** レキシコンをファーストクラスとしてサポートできるからです。そこには、あなたが今作ったばかりの独自のレキシコンと、公式のレキシコンとの間に一切の区別はありません。

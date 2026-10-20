@@ -1,8 +1,8 @@
-# Reading data
+# データの読み込み
 
-OK, now we're going to do some individual reads over our HTTP API! Most of the ways you'll interact with AT records, other than the Jetstream websocket, are just HTTP calls, and here you'll see a functional example.
+さて、それではHTTP APIを使って、いくつか個別にデータを読み取ってみましょう！JetstreamのWebSocketを除けば、ATレコードを扱う操作のほとんどは単なるHTTP呼び出しです。ここでは、実際に動作する例を見ていきます。
 
-We've got a little Swift program for interacting with our API without authenticating in `Sources/Reads/main.swift`. It looks like this:
+認証なしでAPIとやり取りするための簡単な Swift プログラムを`Sources/Reads/main.swift`に用意しました。内容は以下のとおりです:
 
 ```swift
 import Foundation
@@ -12,7 +12,7 @@ let appviewClient = Client("https://public.api.bsky.app")
 
 let args = CommandLine.arguments.dropFirst()
 
-let defaultActor = "alex.bsky.team"
+let defaultActor = "jp.bsky.app"
 let cmdPosts = "posts"
 
 let (actor, command) =
@@ -38,16 +38,16 @@ if command == cmdPosts {
 }
 ```
 
-The methods it calls, such as `ActorGetProfile`, come from Swift code that [swift-atproto](https://github.com/nnabeyang/swift-atproto) generated from Lexicons and that lives in `Sources/Reads/Lexicon`. You'll generate code like this yourself in a later exercise.
+`ActorGetProfile` などの呼び出しているメソッドは、[swift-atproto](https://github.com/nnabeyang/swift-atproto) がレキシコンから生成した Swift のコードで、`Sources/Reads/Lexicon` にあります。このようなコードは、後の演習で自分で生成します。
 
-To run this program, build and run it with `swift run` from this directory:
+このプログラムを実行するには、このディレクトリで `swift run` を使ってビルドし、実行します:
 
 ```bash
 cd /workspace/exercises/02-reads
 swift run reads
 ```
 
-The first run takes a while, because it downloads and builds the dependencies. By default, you should get my Bluesky profile in the output:
+初回の実行では、依存パッケージのダウンロードとビルドを行うため、少し時間がかかります。特に引数を指定せずに実行すれば、次のBlueskyプロフィールが表示されます:
 
 ```
 {
@@ -56,45 +56,42 @@ The first run takes a while, because it downloads and builds the dependencies. B
       "allowSubscriptions" : "followers"
     },
     "chat" : {
+      "allowGroupInvites" : "none",
       "allowIncoming" : "all"
     },
     "feedgens" : 0,
-    "germ" : {
-      "messageMeUrl" : "https://landing.ger.mx/newUser",
-      "showButtonTo" : "usersIFollow"
-    },
     "labeler" : false,
-    "lists" : 0,
-    "starterPacks" : 0
+    "lists" : 4,
+    "starterPacks" : 4
   },
-  "avatar" : "https://cdn.bsky.app/img/avatar/plain/did:plc:vmt7o7y6titkqzzxav247zrn/bafkreiaho53ylxsdwhsgc7zyh7t6l3q37xwkrdpzbbzx5zrlywztgspn4a",
-  "banner" : "https://cdn.bsky.app/img/banner/plain/did:plc:vmt7o7y6titkqzzxav247zrn/bafkreigvwsqd5vpvo7qg3prrbeudyg2jcnoburwsca3ahmelzehiumxzrm",
-  "createdAt" : "2023-05-15T15:20:45.790Z",
-  "description" : "the passive pasadena thrill | bsky devrel\n\nbook a meeting: https://calendar.app.google/rNeqWSx2uMfzhQYV6",
-  "did" : "did:plc:vmt7o7y6titkqzzxav247zrn",
-  "displayName" : "Alex",
-  "followersCount" : 2072,
-  "followsCount" : 923,
-  "handle" : "alex.bsky.team",
-  "indexedAt" : "2026-02-20T21:02:25.750Z",
+  "avatar" : "https://cdn.bsky.app/img/avatar/plain/did:plc:ry3hbexak5ytsum7aazhpkbv/bafkreienc27b7pfsjflwvh645zh7ywb3ruwgshwqziv3ilo5mqsksjnl3i",
+  "banner" : "https://cdn.bsky.app/img/banner/plain/did:plc:ry3hbexak5ytsum7aazhpkbv/bafkreid2u5md56vpo5xabs6tu3bbscf3zgfzbwxhkh3wedrh46lpvnzloe",
+  "createdAt" : "2026-03-31T23:39:06.356Z",
+  "description" : "Bluesky日本語公式アカウントです（ユーザー名をチェック👆）。\n\n✉️ バグのご報告、機能リクエスト、フィードバックはこちらのメールアドレスへ →  support@bsky.app\n⚠️ 違反行為などの報告は、投稿右下の「…」→「投稿を報告」からお願いします。",
+  "did" : "did:plc:ry3hbexak5ytsum7aazhpkbv",
+  "displayName" : "Bluesky日本語（公式）",
+  "followersCount" : 30399,
+  "followsCount" : 7,
+  "handle" : "jp.bsky.app",
+  "indexedAt" : "2026-10-09T00:57:41.057Z",
   "labels" : [
 
   ],
   "pinnedPost" : {
-    "cid" : "bafyreideit7u37hyuhtgapiypl4wpgcenxif7l3bypplwkvjoknz4pujdq",
-    "uri" : "at://did:plc:vmt7o7y6titkqzzxav247zrn/app.bsky.feed.post/3lripmoyr3c2y"
+    "cid" : "bafyreiaupiqpvecwabwcyuql3ixp5q5f5us4zy5fdjmjsb7p7w2zgekip4",
+    "uri" : "at://did:plc:ry3hbexak5ytsum7aazhpkbv/app.bsky.feed.post/3mikfzwbw2k2j"
   },
-  "postsCount" : 3218,
+  "postsCount" : 186,
   "verification" : {
     "trustedVerifierStatus" : "none",
     "verifications" : [
       {
-        "createdAt" : "2025-12-01T19:28:19.103Z",
+        "createdAt" : "2026-04-03T00:02:41.492Z",
         "isValid" : true,
         "issuer" : "did:plc:z72i7hdynmk6r22z27h6tvur",
         "issuerDisplayName" : "Bluesky",
         "issuerHandle" : "bsky.app",
-        "uri" : "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.graph.verification/3m6x5xorbfa2c"
+        "uri" : "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.graph.verification/3mikg6mqywn2r"
       }
     ],
     "verifiedStatus" : "valid"
@@ -102,21 +99,21 @@ The first run takes a while, because it downloads and builds the dependencies. B
 }
 ```
 
-## Other ways to read data
+## データを読み取るその他の方法
 
-You can also run it a couple of other ways! For example, try providing your own handle as an additional argument, in place of `alice.example.com`:
+他にもいくつか実行方法があります。例えば、`alice.example.com` の代わりに、追加の引数として自分の **ハンドル** を指定してみてください:
 
 ```bash
 swift run reads alice.example.com
 ```
 
-That should return your profile. In both of these cases, we're calling `app.bsky.actor.getProfile` on the Bluesky AppView. You can also use this same program to get your 10 most recent posts instead, by adding a `posts` argument:
+これであなたのプロフィールが返されるはずです。これらのケースでは、Bluesky の AppView の `app.bsky.actor.getProfile` を呼び出しています。また、引数に`posts`を追加することで、同じプログラムを使って最新の投稿10件を取得することもできます：
 
 ```bash
 swift run reads alice.example.com posts
 ```
 
-This calls `com.atproto.repo.listRecords` for the `app.bsky.feed.post` collection instead. Posts are records in your repository, so this call goes to your PDS rather than to the AppView. Which PDS? The program finds out in `Sources/Reads/Resolve.swift`:
+この場合、代わりに`app.bsky.feed.post`コレクションに対して`com.atproto.repo.listRecords`が呼び出されます。投稿はあなたのリポジトリにあるレコードなので、この呼び出しは AppView ではなく、あなたの PDS に送られます。では、どの PDS でしょうか？ プログラムは `Sources/Reads/Resolve.swift` でそれを調べています:
 
 ```swift
 /// Finds the PDS that hosts an account's repository.
@@ -149,6 +146,6 @@ func resolvePDS(_ actor: String, appview: Client) async throws -> Client {
 }
 ```
 
-The handle resolves to a DID, the DID's document names the PDS, and the PDS serves the repository. Any PDS works, not only the one Bluesky runs.
+ハンドルから DID が分かり、DID ドキュメントに PDS が書かれていて、その PDS がリポジトリを提供しています。Bluesky が運営する PDS に限らず、どの PDS でも同じように動きます。
 
-Feel free to copy these post URIs into a browser interface to get a better look at them. Anything interesting here?
+取得した投稿のURIをブラウザにコピーして、中身を詳しく確認してみてください。何か面白い発見はありましたか？

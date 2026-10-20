@@ -1,10 +1,10 @@
-# Building an Agent
+# エージェントの構築
 
-For our first exercise for this Workshop portion, we're going to build the bot from the [build an agent](https://atproto.com/guides/bot-tutorial) tutorial from our docs, in Swift. Follow the [Swift version of the tutorial](https://nnabeyang.github.io/bsky-bot-swift/).
+このワークショップの最初の演習では、[公式ドキュメント](https://atproto.com/ja)にある『[エージェント作成](https://atproto.com/ja/guides/bot-tutorial)』チュートリアルのボットを、Swift で作ります。[Swift 版のチュートリアル](https://nnabeyang.github.io/bsky-bot-swift/)に沿って進めてください。
 
-*You will likely want to register a new account for this tutorial so you don't spam your existing followers. The starter already has the Swift code generated from the Lexicons the bot uses, so there's no step for installing Lexicons — we'll explain how that works later.*
+*既存のフォロワーのタイムラインをテスト投稿で埋めてしまわないよう（スパム状態を避けるため）、このチュートリアル用に新しいアカウントを作成することをお勧めします。また、スターターにはボットが使うレキシコンから生成した Swift のコードがすでに含まれているので、レキシコンをインストールする手順はありません。その仕組みは後ほど説明します。*
 
-The `bot` in this directory is [bsky-bot-swift](https://github.com/nnabeyang/bsky-bot-swift), which can already log in with an app password. If `bot` is empty, fetch it first, then go into it:
+このディレクトリにある `bot` は [bsky-bot-swift](https://github.com/nnabeyang/bsky-bot-swift) で、アプリパスワードでログインするところまではできています。`bot` が空の場合は、先に取得してから、中に移動してください:
 
 ```bash
 cd /workspace/exercises/08-agent
@@ -12,8 +12,8 @@ git submodule update --init bot
 cd bot
 ```
 
-Then, proceed from the first chapter of the tutorial, starting with filling in `.env`.
+準備ができたら、チュートリアルの最初の章の、`.env` の記入から進めてください。
 
-In this exercise, you'll deploy a standalone bot that can create records on the network, and add functionality for it to get existing records and reply to them. Feel free to deviate from the tutorial in its second chapter — once you have the bot working and posting, you can have it interact with other users in any way you can think of! The `complete` branch of bsky-bot-swift has the finished bot, if you want to compare.
+この演習では、ネットワーク上にレコードを作成できるスタンドアロン・ボットをデプロイし、既存のレコードを取得して返信する機能を追加します。チュートリアルの2章以降は、チュートリアルの通りでなくても構いません。ボットが正常に動作して投稿できるようになったら、自由にカスタマイズして、思いつく限りの方法で他のユーザーと交流させてみてください！完成版のボットは bsky-bot-swift の `complete` ブランチにあるので、比べてみたいときに参照してください。
 
-Just remember our rules: If your bot interacts with other users, please only interact (like, repost, reply, etc.) if the user has tagged the bot account. It should be an opt-in interaction.
+ただし、一点だけルールを守ってください。ボットが他のユーザーとやり取り（いいね、リポスト、返信など）を行うのは、**そのユーザーがボットのアカウントをタグ付けしている場合のみ** にしてください。あくまで相手が望んだ場合のみ反応するようにしましょう。

@@ -1,19 +1,19 @@
-# Statusphere
+# Statusphere（ステータスフィア）
 
-OK! We're almost at the end of the workshop now — this is our last exercise.
+さあ、ワークショップもいよいよ終盤です。これが最後の演習です。
 
-Remember back in Exercise 3, when we wrote some "xyz.statusphere.status" records? Well, those actually come from an [entire tutorial](https://atproto.com/guides/statusphere-tutorial) implementing a sample app that we call "Statusphere."
+演習3で "xyz.statusphere.status" というレコードを作成したのを覚えていますか？ 実は、それらは "Statusphere" というサンプルアプリの実装手順を記した[チュートリアル](https://atproto.com/guides/statusphere-tutorial)から来ているものです。
 
-Statusphere creates and consumes records from the Atmosphere — it can write its own records, and it can display records from other people publishing under that Lexicon too.
+Statusphere は Atmosphere 上でレコードの作成と読み込みを行います。独自のレコードを書き込むこともできますし、同じレキシコンを用いて公開されている他のユーザーのレコードを表示することも可能です。
 
-The `sample-app` in this directory is [statusphere-swift](https://github.com/nnabeyang/statusphere-swift), a SwiftUI version of Statusphere. It provides a starting point — it has an iOS app that logs in with atproto OAuth, but no other features yet. Go ahead and work from there to complete the [Swift tutorial](https://nnabeyang.github.io/statusphere-swift/). Feel free to make changes as you go, and don't worry if you don't finish! This is meant to show off what "putting it all together" can look like, for one particular kind of record.
+このディレクトリにある `sample-app` は、Statusphere の SwiftUI 版である [statusphere-swift](https://github.com/nnabeyang/statusphere-swift) で、開発の出発点となるコードです。atproto OAuth でログインできる iOS アプリの基本的な構成は整っていますが、それ以外の機能はまだ実装されていません。ここから作業を開始して、[Swift 版のチュートリアル](https://nnabeyang.github.io/statusphere-swift/)を完成させてみましょう。進めながら自由にコードを書き換えてみてください。時間内に完成できなくても大丈夫です！ この演習の目的は、特定のレコードを題材に、これまでの要素を「すべて統合する」とどのような形になるのかを体感してもらうことにあります。
 
-This exercise builds an iOS app, so it doesn't run in Codespaces. You'll need a Mac with Xcode 27 and an iOS simulator. On your Mac, clone this repository with its submodules and open the project:
+この演習では iOS アプリを作るため、Codespaces では動きません。Xcode 27 と iOS シミュレーターが入った Mac が必要です。Mac 上で、サブモジュールを含めてこのリポジトリをクローンし、プロジェクトを開いてください:
 
 ```bash
-git clone --recurse-submodules -b swiftlang https://github.com/nnabeyang/atproto-workshop-ja.git
+git clone --recurse-submodules -b swiftlang-ja https://github.com/nnabeyang/atproto-workshop-ja.git
 cd atproto-workshop-ja/exercises/07-statusphere/sample-app
 open Statusphere.xcodeproj
 ```
 
-If you already cloned this repository without `--recurse-submodules`, run `git submodule update --init` to fetch `sample-app`. The `complete` branch of statusphere-swift has the finished app, if you want to compare.
+`--recurse-submodules` を付けずにクローンした場合は、`git submodule update --init` を実行して `sample-app` を取得してください。完成版のアプリは statusphere-swift の `complete` ブランチにあるので、比べてみたいときに参照してください。
