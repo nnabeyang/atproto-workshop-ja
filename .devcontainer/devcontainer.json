@@ -18,5 +18,6 @@
     "forwardPorts": [3000, 2480],
     "remoteEnv": {
         "PROMPT_DIRTRIM": "2"
-    }
+    },
+    "postCreateCommand": "sudo ln -sfn \"$PWD\" /workspace && git submodule update --init"
 }
