@@ -11,6 +11,8 @@ Consider using a tool like https://www.slido.com/features-live-qa to gather ques
 
 ## Hands-On Exercises
 
+This branch has the exercises in Swift, using [swift-atproto](https://github.com/nnabeyang/swift-atproto). Exercise 6 is still in TypeScript. Exercises 7 and 8 work from their own repositories, [statusphere-swift](https://github.com/nnabeyang/statusphere-swift) and [bsky-bot-swift](https://github.com/nnabeyang/bsky-bot-swift), which are included as submodules and come with Swift tutorials.
+
 Directory Name                     | Exercise
 :--------------------------------- | :-------------------------------------------------------
 `exercises/01-firehose`             | [Exercise 1](exercises/01-firehose/README.md)
